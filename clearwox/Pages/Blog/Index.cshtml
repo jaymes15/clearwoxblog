@@ -1,0 +1,86 @@
+﻿@page
+@model clearwox.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<!-- site-main -->
+<div id="main" class="site-main">
+
+
+
+
+
+    <!-- post-slider -->
+    <!-- layout-fixed -->
+    <div class="layout-fixed">
+        <!-- blog-regular -->
+        <div class="blog-regular">
+
+
+            @foreach (var item in Model.Blog)
+            {
+                <!-- .hentry -->
+                <article class="hentry post">
+
+                    <!-- .entry-header -->
+                    <header class="entry-header">
+
+
+                        <!-- .entry-title -->
+                        <h1 class="entry-title"><a href="blog-single.html">Runaway A Road Adventure</a></h1>
+
+                        <!-- .entry-meta -->
+                        <div class="entry-meta">
+                            <span class="entry-date">
+                                <time class="entry-date"> @Html.DisplayFor(modelItem => item.PublishDate) |</time>
+                            </span>
+                            <span class="comment-link">
+                                <a href="blog-single.html#comments">  @Html.DisplayFor(modelItem => item.AuthorName) |</a>
+                            </span>
+                            <span class="read-time"><span class="eta"></span><a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |</span>
+                            <span class="cat-links">
+                                <a href="#" title="View all posts in Travel" rel="category tag"><a asp-page="./Delete" asp-route-id="@item.ID">Delete</a></a>
+                            </span>
+                            <!--<span class="edit-link">
+                                <a class="post-edit-link" href="#">Edit</a>
+                            </span>-->
+                        </div>
+                        <!-- .entry-meta -->
+
+                    </header>
+                    <!-- .entry-header -->
+                    <!-- .featured-image -->
+                    <div class="featured-image">
+                        <a href="blog-single.html">
+                            <img src="~/images/06.jpg" alt="blog-image">
+                        </a>
+                    </div>
+                    <!-- .featured-image -->
+                    <!-- .entry-content -->
+                    <div class="entry-content">
+
+                        <p >@Html.DisplayFor(modelItem => item.Article)
+                        <span class="more">
+							 <a asp-page="./Details" asp-route-id="@item.ID" class="more-link">Details<span class="meta-nav">→</span></a>
+
+                        </span>
+                    </p>
+
+                    </div>
+                    <!-- .entry-content -->
+
+                </article>
+            }
+
+
+
+        </div>
+        <!-- site-main -->
+    </div>
+</div>
